@@ -17,7 +17,7 @@ use text::{
 };
 use util::{ResultExt, debug_panic};
 
-pub const MAX_WORD_DIFF_LINE_COUNT: usize = 8;
+pub const MAX_WORD_DIFF_LINE_COUNT: usize = 1_000;
 
 pub struct BufferDiff {
     pub buffer_id: BufferId,
@@ -2549,6 +2549,11 @@ mod tests {
             "\n",
             "- Cache visible rows before painting.\n",
             "- Skip hidden rows when rebuilding the view.\n",
+    "- Reuse cached geometry for unchanged rows.\n",
+    "- Recompute measurements only for invalidated rows.\n",
+    "- Preserve viewport anchors across refreshes.\n",
+    "- Defer expensive decoration updates until needed.\n",
+    "- Keep offscreen layout work out of the paint path.\n",
         )
         .to_string();
 
